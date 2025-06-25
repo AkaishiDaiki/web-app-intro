@@ -44,7 +44,20 @@ function playGame(playerChoiceIndex) {
     // playerChoiceIndexが0のとき =「プレイヤーの手がグー」
     // computerChoiceIndexが2のとき =「コンピューターの手がパー」
 
-    
+    if (playerChoiceIndex === computerChoiceIndex) {
+        // あいこ
+        resultText = RESULTS.DRAW;
+    } else if (
+        (playerChoiceIndex === 0 && computerChoiceIndex === 1) || // グー vs チョキ
+        (playerChoiceIndex === 1 && computerChoiceIndex === 2) || // チョキ vs パー
+        (playerChoiceIndex === 2 && computerChoiceIndex === 0)    // パー vs グー
+    ) {
+        // プレイヤーの勝ち
+        resultText = RESULTS.WIN;
+    } else {
+        // プレイヤーの負け
+        resultText = RESULTS.LOSE;
+    }
 
 
     // ここまで

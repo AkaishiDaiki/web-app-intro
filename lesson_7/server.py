@@ -22,7 +22,10 @@ async def get_weather():
 # TODO: 課題　ランダムな天気予報を返す API エンドポイントを追加
 # /weather-forecastのAPIを作成
 # レスポンスはweatherをキー、値はランダムな天気予報を返す
-
+@app.get("/weather-forecast")
+async def get_weather_forecast():
+    forecast = random.choice(weather_forecasts)
+    return {"weather": forecast}
 
 # ここから下は書き換えない
 @app.get("/", response_class=HTMLResponse)
