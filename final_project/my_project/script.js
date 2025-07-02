@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const listItem = document.createElement('li');
                 listItem.appendChild(checkbox);
                 listItem.appendChild(document.createTextNode(`課題 ${item.id}, 課題内容 ${item.value_1}, 期日 ${item.value_2},
-                    補足(任意) ${item.value_3}  || ''}`));
+                    補足(任意) ${item.value_3  || ''}`));
                 dataList.appendChild(listItem);
             });
         } catch (error) {
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const value1 = value1Input.value;
         const value2 = value2Input.value;
-        const value3 = value3Input.value || ''; // 補足は任意なので、空文字をデフォルト値とする
+        const value3 = value3Input.value;  // 補足は任意なので、空文字をデフォルト値とする
 
 
         try {
