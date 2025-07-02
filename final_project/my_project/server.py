@@ -64,6 +64,7 @@ def create_data_item(item: DataBase):
         id=item_id,
         value_1=item.value_1,
         value_2=item.value_2,
+        value_3=item.value_3,
     )
 
 
