@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const addDataForm = document.getElementById('add-data-form');
     const value1Input = document.getElementById('value1');
     const value2Input = document.getElementById('value2');
-    const value3Input = document.getElementById('value3');
 
     // データ一覧を取得して表示する関数
     async function fetchData() {
@@ -20,8 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 checkbox.id = `item-${item.id}`;
                 const listItem = document.createElement('li');
                 listItem.appendChild(checkbox);
-                listItem.appendChild(document.createTextNode(`課題 ${item.id}, 課題内容 ${item.value_1}, 期日 ${item.value_2},
-                    補足(任意) ${item.value_3  || ''}`));
+                listItem.appendChild(document.createTextNode(`課題 ${item.id}, 課題内容 ${item.value_1  || ''}`));
                 dataList.appendChild(listItem);
             });
         } catch (error) {
@@ -35,8 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         event.preventDefault(); // デフォルトのフォーム送信をキャンセル
 
         const value1 = value1Input.value;
-        const value2 = value2Input.value;
-        const value3 = value3Input.value;  // 補足は任意なので、空文字をデフォルト値とする
+        const value2 = value2Input.value;  
 
 
         try {
@@ -55,8 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // フォームをクリア
             value1Input.value = '';
             value2Input.value = '';
-            value3Input.value = '';
-        
 
             // データ一覧を再読み込み
             await fetchData();
