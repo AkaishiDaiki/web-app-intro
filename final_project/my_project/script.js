@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addDataForm = document.getElementById('add-data-form');
     const value1Input = document.getElementById('value1');
     const value2Input = document.getElementById('value2');
+    const value3Input = document.getElementById('value3');
 
     // データ一覧を取得して表示する関数
     async function fetchData() {
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const listItem = document.createElement('li');
                 listItem.appendChild(checkbox);
                 listItem.appendChild(document.createTextNode(`課題 ${item.id}, 課題内容 ${item.value_1}, 期日 ${item.value_2},
-                    補足(任意) ${item.value_3} `));
+                    補足(任意) ${item.value_3}  || ''}`));
                 dataList.appendChild(listItem);
             });
         } catch (error) {
