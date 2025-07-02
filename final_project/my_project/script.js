@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 checkbox.type = 'checkbox';
                 checkbox.id = `item-${item.id}`;
                 const listItem = document.createElement('li');
+                listItem.appendChild(checkbox);
                 listItem.textContent = `ID: ${item.id}, 課題内容 ${item.value_1}, 期日 ${item.value_2 || 'N/A'}`;
                 dataList.appendChild(listItem);
             });
