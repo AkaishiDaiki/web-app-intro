@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             dataList.innerHTML = ''; // 既存のリストをクリア
             data.forEach(item => {
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
                 const listItem = document.createElement('li');
                 listItem.textContent = `ID: ${item.id}, 値1: ${item.value_1}, 値2: ${item.value_2 || 'N/A'}`;
                 dataList.appendChild(listItem);
