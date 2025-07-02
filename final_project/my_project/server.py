@@ -35,6 +35,7 @@ def initialize_db():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             value_1 TEXT NOT NULL,
             value_2 TEXT
+            value_3 TEXT
         )
         """
     )
@@ -55,7 +56,7 @@ def create_data_item(item: DataBase):
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute(
-        "INSERT INTO data (value_1, value_2, value_3) VALUES (?, ?)",
+        "INSERT INTO data (value_1, value_2, value_3) VALUES (?, ?, ?)",
         (item.value_1, item.value_2, item.value_3),
     )
     conn.commit()
