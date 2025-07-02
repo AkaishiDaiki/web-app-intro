@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const listItem = document.createElement('li');
                 listItem.appendChild(checkbox);
                 listItem.appendChild(document.createTextNode(`課題 ${item.id}, 課題内容 ${item.value_1}, 期日 ${item.value_2},
-                    補足(任意) ${item.id} || 'N/A'}`));
+                    補足(任意) ${item.id} `));
                 dataList.appendChild(listItem);
             });
         } catch (error) {
