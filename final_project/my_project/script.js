@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const value1 = value1Input.value;
         const value2 = value2Input.value;
+        const value3 = value3Input.value || ''; // 補足は任意なので、空文字をデフォルト値とする
+
 
         try {
             const response = await fetch('/data', {
@@ -43,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ value_1: value1, value_2: value2 }),
+                body: JSON.stringify({ value_1: value1, value_2: value2, value_3: value3}),
             });
 
             if (!response.ok) {
@@ -53,6 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // フォームをクリア
             value1Input.value = '';
             value2Input.value = '';
+            value3Input.value = '';
+        
 
             // データ一覧を再読み込み
             await fetchData();
