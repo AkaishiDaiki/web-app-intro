@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
                 const listItem = document.createElement('li');
-                listItem.textContent = `ID: ${item.id}, 値1: ${item.value_1}, 値2: ${item.value_2 || 'N/A'}`;
+                listItem.textContent = `ID: ${item.id}, 課題内容 ${item.value_1}, 期日 ${item.value_2 || 'N/A'}`;
                 dataList.appendChild(listItem);
             });
         } catch (error) {
