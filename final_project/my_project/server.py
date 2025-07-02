@@ -34,7 +34,7 @@ def initialize_db():
         CREATE TABLE IF NOT EXISTS data (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             value_1 TEXT NOT NULL,
-            value_2 TEXT
+            value_2 TEXT,
             value_3 TEXT
         )
         """
