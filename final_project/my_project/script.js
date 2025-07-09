@@ -20,6 +20,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 const listItem = document.createElement('li');
                 listItem.appendChild(checkbox);
                 listItem.appendChild(document.createTextNode(`課題 ${item.id}, 課題内容 ${item.value_1}, 期日 ${item.value_2  || ''}`));
+               const editButton = document.createElement('button');
+                editButton.textContent = '編集';
+                editButton.addEventListener('click', async () => {
+                    const newValue1 = prompt('新しい課題内容を入力してください:', item.value_1);
+                    const newValue2 = prompt('新しい期日を入力してください:', item.value_2 || '');
+                    if (newValue1 !== null && newValue2 !== null) {
+                        try {
+                            const editResponse = await fetch(`/data/${item.id}`, {
+                                method: 'PUT',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({ value_1: newValue1, value_2: newValue2 }),
+                            });
+                            if (!editResponse.ok) {
+                                throw new Error(`HTTP error! status: ${editResponse.status}`);
+                            }
+                            // 編集成功後、リストを再読み込み
+                            await fetchData();
+                        } catch (error) {
+                            console.error('データの編集に失敗しました:', error);
+                            alert('データの編集に失敗しました。');
+                        }
+                    }
+                });
+                listItem.appendChild(editButton);
                 const deleteButton = document.createElement('button');
                 deleteButton.textContent = '削除';
                 deleteButton.addEventListener('click', async () => {
@@ -32,10 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                         // 削除成功後、リストを再読み込み
                         await fetchData();
+                            
                     } catch (error) {
                         console.error('データの削除に失敗しました:', error);
                         alert('データの削除に失敗しました。');
                     }
+                    
                 });
                 listItem.appendChild(deleteButton);
                 dataList.appendChild(listItem);

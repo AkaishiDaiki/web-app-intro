@@ -74,6 +74,24 @@ def delete_data_item(item_id: int):
     conn.commit()
     conn.close()
     return Response(status_code=204)
+@app.put("/data/{item_id}", response_model=DataBase)
+def update_data_item(item_id: int, item: DataBase):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute(
+        "UPDATE data SET value_1 = ?, value_2 = ? WHERE id = ?",
+        (item.value_1, item.value_2, item_id),
+    )
+    conn.commit()
+    if cursor.rowcount == 0:
+        conn.close()
+        return Response(status_code=404)
+    conn.close()
+    return DataBase(
+        id=item_id,
+        value_1=item.value_1,
+        value_2=item.value_2,
+    )
 
 
 
