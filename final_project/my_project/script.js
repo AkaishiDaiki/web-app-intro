@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 checkbox.id = `item-${item.id}`;
                 const listItem = document.createElement('li');
                 listItem.appendChild(checkbox);
-                listItem.appendChild(document.createTextNode(`課題 ${item.id}, 課題内容 ${item.value_1  || ''}`));
+                listItem.appendChild(document.createTextNode(`課題 ${item.id}, 課題内容 ${item.value_1}, 期日 ${item.value_2  || ''}`));
                 dataList.appendChild(listItem);
             });
         } catch (error) {
