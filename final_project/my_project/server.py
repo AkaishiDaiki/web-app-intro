@@ -66,6 +66,15 @@ def create_data_item(item: DataBase):
         value_1=item.value_1,
         value_2=item.value_2,
     )
+@app.delete("/data/{item_id}", status_code=204)
+def delete_data_item(item_id: int):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM data WHERE id = ?", (item_id,))
+    conn.commit()
+    conn.close()
+    return Response(status_code=204)
+
 
 
 # ここから下は書き換えない

@@ -20,6 +20,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 const listItem = document.createElement('li');
                 listItem.appendChild(checkbox);
                 listItem.appendChild(document.createTextNode(`課題 ${item.id}, 課題内容 ${item.value_1}, 期日 ${item.value_2  || ''}`));
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = '削除';
+                deleteButton.addEventListener('click', async () => {
+                    try {
+                        const deleteResponse = await fetch(`/data/${item.id}`, {
+                            method: 'DELETE',
+                        });
+                        if (!deleteResponse.ok) {
+                            throw new Error(`HTTP error! status: ${deleteResponse.status}`);
+                        }
+                        // 削除成功後、リストを再読み込み
+                        await fetchData();
+                    } catch (error) {
+                        console.error('データの削除に失敗しました:', error);
+                        alert('データの削除に失敗しました。');
+                    }
+                });
+                listItem.appendChild(deleteButton);
                 dataList.appendChild(listItem);
             });
         } catch (error) {
