@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 listItem.appendChild(document.createTextNode(`課題 ${item.id}, 課題内容 ${item.value_1}, 期日 ${item.value_2  || ''}`));
                const editButton = document.createElement('button');
                 editButton.textContent = '編集';
-                editButton.style.marginLeft = '15px';
+                editButton.style.marginLeft = '25px';
                 editButton.addEventListener('click', async () => {
                     const newValue1 = prompt('新しい課題内容を入力してください:', item.value_1);
                     const newValue2 = prompt('新しい期日を入力してください:', item.value_2 || '');
